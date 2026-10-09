@@ -5,7 +5,7 @@ public class Usuario {
     private String nome;
     private String telefone;
     private String email;
-    private int nivelAcesso;
+    private String nivelAcesso;
     private String senha;
 
     public int getIdUsuario() {
@@ -40,11 +40,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getNivelAcesso() {
+    public String getNivelAcesso() {
         return nivelAcesso;
     }
 
-    public void setNivelAcesso(int nivelAcesso) {
+    public void setNivelAcesso(String nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
 
