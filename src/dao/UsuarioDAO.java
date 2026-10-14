@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 public class UsuarioDAO {
 
     public Usuario autenticar(String login, String senha) {
-        String sql = "SELECT * FROM usuarios WHERE login=? AND senha=?";
+        String sql = "SELECT * FROM usuarios WHERE email=? AND senha=?";
         try (
                 Connection conexao = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conexao.prepareStatement(sql)
@@ -25,7 +25,7 @@ public class UsuarioDAO {
                 usuario.setNome(rs.getString("nome"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
-                usuario.setNivelAcesso(rs.getString("perfil"));
+                usuario.setNivelAcesso(rs.getString("nivel_acesso"));
 
                 return usuario;
             }
