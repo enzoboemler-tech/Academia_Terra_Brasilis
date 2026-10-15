@@ -96,6 +96,7 @@ public class TelaLogin extends JFrame {
         btnEntrar.setFont(new Font("Arial", Font.BOLD, 25));
         btnEntrar.addActionListener(e -> realizarLogin());
         getRootPane().setDefaultButton(btnEntrar); // permite que o enter "clique" no botão mesmo de qualquer lugar da página
+        btnEntrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         fundo.add(btnEntrar);
 
         setVisible(true);
@@ -158,7 +159,7 @@ public class TelaLogin extends JFrame {
             //Fecha apenas a tela de login
             dispose();
             // Abre a tela inicial
-            new TelaInicial().setVisible(true);
+            new TelaInicial();
         } else {
             Mensagens.erro("Login ou senha inválidos.");
         }
