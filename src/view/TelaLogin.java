@@ -155,7 +155,7 @@ public class TelaLogin extends JFrame {
             if (nomeUsuario == null || nomeUsuario.isBlank()){
                 nomeUsuario = usuario.getEmail();
             }
-            Mensagens.sucesso("Bem-vindo "+nomeUsuario);
+            //Mensagens.sucesso("Bem-vindo "+nomeUsuario);
             //Fecha apenas a tela de login
             dispose();
             // Abre a tela inicial
