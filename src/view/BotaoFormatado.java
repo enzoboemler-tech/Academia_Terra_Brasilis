@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 
 public class BotaoFormatado {
 
@@ -28,6 +30,35 @@ public class BotaoFormatado {
                 botao.setContentAreaFilled(false);
             }
         });
+
+        return botao;
+    }
+
+    public static JButton formatarBotaoCircular(JButton botao, ImageIcon icone) {
+        botao.setContentAreaFilled(false);   // tira o fundo (a cor cinza/azul do botão)
+        botao.setBorderPainted(false);       // tira a borda
+        botao.setFocusPainted(false);        // tira o contorno pontilhado ao clicar
+        botao.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Mostra a 'mãozinha' do mouse ao passar pelo botão
+
+        // Define o ícone normal, para o método não depender de como o botão foi criado
+        botao.setIcon(icone);
+
+        // Copia o ícone para uma BufferedImage, que é o formato que o RescaleOp aceita.
+        // TYPE_INT_ARGB mantém o canal alfa (transparência), preservando o recorte circular
+        BufferedImage img = new BufferedImage(
+                icone.getIconWidth(), icone.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = img.createGraphics();
+        g.drawImage(icone.getImage(), 0, 0, null);
+        g.dispose(); // libera os recursos gráficos
+
+        // Multiplica R, G e B por 0,85 (escurece 15%) e mantém o alfa em 1 (inalterado).
+        // O array de zeros (new float[4]) é o deslocamento somado depois da multiplicação
+        RescaleOp escurecer = new RescaleOp(
+                new float[]{0.75f, 0.75f, 0.75f, 1f}, new float[4], null);
+        ImageIcon iconeHover = new ImageIcon(escurecer.filter(img, null));
+
+        botao.setRolloverEnabled(true);
+        botao.setRolloverIcon(iconeHover);
 
         return botao;
     }
