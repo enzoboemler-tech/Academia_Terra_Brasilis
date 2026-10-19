@@ -159,7 +159,7 @@ public class TelaLogin extends JFrame {
             //Fecha apenas a tela de login
             dispose();
             // Abre a tela inicial
-            new TelaInicial();
+            new TelaFichasDeTreino();
         } else {
             Mensagens.erro("Login ou senha inválidos.");
         }

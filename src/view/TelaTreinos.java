@@ -1,6 +1,8 @@
 package view;
 
-public class TelaTreinos {
+import javax.swing.*;
+
+public class TelaTreinos extends JFrame {
     public TelaTreinos() {
 
     }

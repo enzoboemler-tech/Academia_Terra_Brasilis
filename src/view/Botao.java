@@ -5,9 +5,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 
-public class BotaoFormatado {
+public class Botao {
 
-    public static JButton formatarBotao(JButton botao, int altura) {
+    public static JButton deixarBotaoNaoClicavel(JButton botao) {
+        botao.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        return botao;
+    }
+
+    public static JButton criarBotaoRetangular(String titulo, ImageIcon icone, int altura) {
+        JButton botao = new JButton(titulo, icone);
+        botao.setFont(new Font("Arial", Font.BOLD, 24));
+        botao.setForeground(new Color(255, 255, 255));
+
         botao.setContentAreaFilled(false);   // tira o fundo (a cor cinza/azul do botão)
         botao.setBorderPainted(false);       // tira a borda
         botao.setFocusPainted(false);        // tira o contorno pontilhado ao clicar
@@ -30,11 +39,11 @@ public class BotaoFormatado {
                 botao.setContentAreaFilled(false);
             }
         });
-
         return botao;
     }
 
-    public static JButton formatarBotaoCircular(JButton botao, ImageIcon icone) {
+    public static JButton criarBotaoCircular(ImageIcon icone) {
+        JButton botao = new JButton(icone);
         botao.setContentAreaFilled(false);   // tira o fundo (a cor cinza/azul do botão)
         botao.setBorderPainted(false);       // tira a borda
         botao.setFocusPainted(false);        // tira o contorno pontilhado ao clicar
